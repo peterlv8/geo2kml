@@ -1,11 +1,15 @@
 from setuptools import setup
 
+with open('README.md') as f:
+    readme = f.read()
+
 setup(
     name='geo2kml',
-    version='0.0.1',
+    version='0.0.2',
     author='Peter LV',
     author_email='peterlvpy@gmail.com',
-    long_description='A small library to convert geojson to kml',
+    description='A small library to convert geojson to kml',
+    long_description=readme,
     license='License :: OSI Approved :: MIT License',
     url="https://github.com/peterlv8/geo2kml",
     classifiers=[
