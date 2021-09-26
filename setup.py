@@ -8,7 +8,7 @@ setup(
     version='0.0.1',
     author='Peter LV',
     author_email='peterlvpy@gmail.com',
-    description='A small library to convert geojson to kml',
+    description='A package to convert geojson to kml',
     long_description=readme,
     license='License :: OSI Approved :: MIT License',
     url="https://github.com/peterlv8/geo2kml",
