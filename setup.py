@@ -5,7 +5,7 @@ with open('README.rst') as f:
 
 setup(
     name='geo2kml',
-    version='0.0.2',
+    version='0.0.3',
     author='Peter LV',
     author_email='peterlvpy@gmail.com',
     description='A small library to convert geojson to kml',

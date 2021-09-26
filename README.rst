@@ -9,7 +9,7 @@ Installation
 
 Usage
 =====
-``from geo2kml import to_kml
+.. code-block:: python
+  from geo2kml import to_kml
 
-kml_str = to_kml(geojson)
-``
+  kml_str = to_kml(geojson)
