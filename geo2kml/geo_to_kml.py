@@ -45,7 +45,7 @@ def geo_feature(geo_data: dict):
     kml_str = geometry_converter(geometry)
     if not kml_str:
         return ''
-    return tag('Placemark', kml_str)
+    return tag('Placemark', extendeddata(geo_data.get('properties')) + kml_str)
 
 
 def geo_point(geo_data: dict):
@@ -160,11 +160,33 @@ def gen_linear_ring(coords: list):
     """
     Generate linear ring
     """
-    return '\n'.join([','.join(map(str, coord)) for coord in coords])
+    return ' '.join([','.join(map(str, coord)) for coord in coords])
 
 
-def tag(tag_name: str, data: str):
+def tag(tag_name: str, data: str, attributes: list = None):
     """
     Generate tag include tag name and tag data
     """
-    return '<' + tag_name + '>' + data + '</' + tag_name + '>'
+    return '<' + tag_name + attr(attributes) + '>' + data + '</' + tag_name + '>'
+
+
+def pairs(_):
+    o = []
+    for i in _:
+        o.append([i, _[i]])
+    return o
+
+
+def extendeddata(_: dict):
+    return tag('ExtendedData', ''.join(map(data, pairs(_))))
+
+
+def data(_: list):
+    return tag('Data', tag('value', str(_[1])), [['name', str(_[0])]])
+
+
+def attr(attributes: list):
+    if attributes and len(attributes):
+        return ' ' + ' '.join([f'{a[0]}="{a[1]}"' for a in attributes])
+    else:
+        return ''
